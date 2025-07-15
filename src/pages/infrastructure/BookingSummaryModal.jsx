@@ -4,7 +4,7 @@ import { assets } from "../../assets/assets";
 import { useBookingForm } from "../../hooks/useBookingForm";
 import useFetch from "../../hooks/useFetch";
 
-const BookingSummaryModal = () => {
+const BookingSummaryModal = ({ closeModal }) => {
   const { state, dispatch } = useBookingForm();
   const { loading, error, data, post } = useFetch(
     "https://agricon-express-backend.onrender.com/api/v1/bookings/",
@@ -89,7 +89,7 @@ const BookingSummaryModal = () => {
 
         <div className="bookingSummaryTotal">
           <img src={assets.pending} alt="Pending Logo" />
-          <div>
+          <div className="bookingSummaryTotalWrapper">
             <div>
               <p>Sub-total</p>
               <span className="bold">₦{state.amount || "0"}</span>
@@ -118,7 +118,9 @@ const BookingSummaryModal = () => {
         <Button onClick={handlePayment} disabled={loading}>
           {loading ? "Processing..." : "Continue to Payment"}
         </Button>
-        <Button type="button">Cancel</Button>
+        <Button type="button" onClick={closeModal}>
+          Cancel
+        </Button>
       </div>
     </div>
   );

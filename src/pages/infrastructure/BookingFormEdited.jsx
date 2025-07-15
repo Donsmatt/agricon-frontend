@@ -1,3 +1,4 @@
+import "../../styles/BookingSummaryModal.css";
 import { useState } from "react";
 import Button from "../../components/infrastructure/ui/Button";
 import CalendarPicker from "../../components/infrastructure/ui/CalendarPicker";
@@ -166,7 +167,11 @@ export default function BookingFormEdited() {
 
         <CalendarPicker />
       </div>
-      {showModal && <BookingSummaryModal />}
+      {showModal && (
+        <div className="bookingSummaryBackdrop">
+          <BookingSummaryModal closeModal={() => setShowModal(false)} />
+        </div>
+      )}
     </>
   );
 }

@@ -1,0 +1,88 @@
+.bookingSummaryBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.bookingSummary {
+  background: #ffffff;
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 20px;
+  z-index: 50;
+  animation: scaleIn 0.3s ease;
+}
+
+.bookingSummaryHeader img {
+  height: 40px;
+}
+
+.bookingWrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.bookingWrapper img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  background: #eee;
+  border-radius: 4px;
+}
+
+.bookingSummaryTotal {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.bookingSummaryTotal img {
+  width: 40px;
+}
+
+.bookingSummaryTotalWrapper {
+  flex-grow: 1;
+}
+
+.bookingSummaryTotalWrapper div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
