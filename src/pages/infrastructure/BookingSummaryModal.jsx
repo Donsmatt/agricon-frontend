@@ -3,13 +3,25 @@ import Button from "../../components/infrastructure/ui/Button";
 import { assets } from "../../assets/assets";
 import { useBookingForm } from "../../hooks/useBookingForm";
 import useFetch from "../../hooks/useFetch";
+import { useContext } from "react";
+import { FacilityContext } from "../../components/infrastructure/FacilityContext";
 
 const BookingSummaryModal = ({ closeModal }) => {
+  const accessToken =
+    localStorage.getItem("access_token") ||
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyNzE4ODUwLCJpYXQiOjE3NTI2ODI4NTAsImp0aSI6IjZiMjZjOTJhMThmNzRjMWNhOGIyZDk1NDVhNmMxN2E5IiwidXNlcl9pZCI6IjRiN2M4NGRmLTFiMTEtNDMwYS1iMDkwLTZjM2UyMzdjNWNlYyIsImVtYWlsIjoiZG9uc21hdHQ0NEBnbWFpbC5jb20iLCJyb2xlIjoiRkFSTUVSIn0.BouF8Seu-Cg7SmZMtEFvPBv4R0g9IPL-ZQ3vTiafri8";
+  const { facilities } = useContext(FacilityContext);
   const { state, dispatch } = useBookingForm();
   const { loading, error, data, post } = useFetch(
     "https://agricon-express-backend.onrender.com/api/v1/bookings/",
-    ""
+    accessToken
   );
+  // console.log(state.facilityId, state.amount);
+
+  const facilityData = facilities?.find(
+    (facility) => facility.id === state.facilityId
+  );
+  // console.log(facilityData);
 
   const handlePayment = async () => {
     const payload = {
@@ -28,9 +40,9 @@ const BookingSummaryModal = ({ closeModal }) => {
 
   const bookings = [
     {
-      img: "",
-      imgAlt: "Booking",
-      title: "Facility Booking",
+      img: facilityData?.facilityImage[0],
+      imgAlt: facilityData?.name,
+      title: facilityData?.name,
       quantity: 1,
       unit: "session",
       amount: state.amount || "0",

@@ -46,47 +46,31 @@ export default function BookingFormEdited() {
             New Booking Edited
           </h1>
 
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <label htmlFor="facilityId" className={labelCn}>
               Facility ID *
             </label>
             <input
               id="facilityId"
               type="number"
-              placeholder="Enter facility ID"
               className={inputCn}
               value={state.facilityId}
-              onChange={(e) =>
-                dispatch({
-                  type: "SET_FIELD",
-                  field: "facilityId",
-                  value: e.target.value,
-                })
-              }
-              required
+              readOnly
             />
-          </div>
+          </div> */}
 
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <label htmlFor="farmerId" className={labelCn}>
               Farmer ID *
             </label>
             <input
               id="farmerId"
               type="number"
-              placeholder="Enter farmer ID"
               className={inputCn}
               value={state.farmerId}
-              onChange={(e) =>
-                dispatch({
-                  type: "SET_FIELD",
-                  field: "farmerId",
-                  value: e.target.value,
-                })
-              }
-              required
+              readOnly
             />
-          </div>
+          </div> */}
 
           <div className="flex flex-col gap-4">
             <label htmlFor="startDate" className={labelCn}>
@@ -128,26 +112,18 @@ export default function BookingFormEdited() {
             value={state.endDate ? format(state.endDate, "yyyy-MM-dd") : ""}
           />
 
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <label htmlFor="amount" className={labelCn}>
               Amount *
             </label>
             <input
               id="amount"
               type="number"
-              placeholder="Enter amount"
               className={inputCn}
               value={state.amount}
-              onChange={(e) =>
-                dispatch({
-                  type: "SET_FIELD",
-                  field: "amount",
-                  value: e.target.value,
-                })
-              }
-              required
+              readOnly
             />
-          </div>
+          </div> */}
 
           {state.errors.length > 0 && (
             <ul className="text-red-600 text-sm space-y-1">

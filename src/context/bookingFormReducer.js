@@ -2,10 +2,13 @@ import { createContext } from "react";
 
 export const BookingFormContext = createContext();
 
+const farmerStored = localStorage.getItem("farmerProfile");
+const farmerObject = farmerStored ? JSON.parse(farmerStored) : null;
+
 export const initialState = {
-  facilityId: "",
-  farmerId: "",
-  amount: "",
+  facilityId: localStorage.getItem("facilityId") || "",
+  farmerId: farmerObject?.id || "2",
+  amount: localStorage.getItem("pricePerDay") || "",
   startDate: null,
   endDate: null,
   errors: [],

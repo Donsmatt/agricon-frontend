@@ -2,12 +2,14 @@ import Facility from "../../components/infrastructure/Facility";
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { FacilityContext } from "../../components/infrastructure/FacilityContext";
+import { assets } from "../../assets/assets";
 
 export default function FacilityDetails() {
   const { facilities, error } = useContext(FacilityContext);
   const params = useParams();
 
   const facility = facilities.find((item) => item.id === params.facilityId);
+  localStorage.setItem('facilityId', facility.id);
 
   if (error) {
     return (
@@ -25,14 +27,15 @@ export default function FacilityDetails() {
     );
   }
   console.log(facility);
+  localStorage.setItem('pricePerDay', facility.pricePerDay)
 
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-12">
         <img
-          src={facility.facilityImage[0]}
+          src={facility.facilityImage[0] || assets.greenhouseImage}
           alt={facility.name}
-          className="max-w-[513px] w-full"
+          className="w-full"
         />
         <div>
           <div className="flex justify-between items-center mb-1.75">
